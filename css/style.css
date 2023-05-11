@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+    background-color: #322e3f;
+    color: aquamarine;
+}
+
+body {
+    background-color: #322e3f;
+}
+
+nav{
+    margin: 10px
+}
