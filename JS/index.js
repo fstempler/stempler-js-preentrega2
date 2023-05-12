@@ -38,17 +38,17 @@ function createUser() {
 }
 
 function recommend() {
-  let select = prompt ("Do you want to: \n 1. Recommend me a record. \n 2. Show me my favorite artistis \n 3. Show me my favorite records. \n 4. Change Record 1 \n 5. Change Record 2 \n 6. Leave");
+  let select = prompt ("Do you want to: \n 1. Recommend me a record. \n 2. Show me my favorite artists. \n 3. Show me my favorite records. \n 4. Change Record 1 \n 5. Change Record 2 \n 6. Leave");
   while (trueOFalse) {
     switch (select) {
         case "1":
             recommending();
             break;
         case "2":
-            
+            myArtists();
             break;
         case "3":
-            
+            myRecords();
             break
         case "4":
             
@@ -89,7 +89,6 @@ function jazzRecord (arr, fn){
   }
   
 }
-
 function rockRecord (arr, fn){
   for (const User of userArr){
     if (User.artist1 === "Led Zeppelin" || User.record1 === "Led Zeppelin IV" || User.artist2 === "Led Zeppelin" || User.record2 === "Led Zeppelin IV"){
@@ -100,7 +99,6 @@ function rockRecord (arr, fn){
   }
   
 }
-
 function popRecord (arr, fn){
   for (const User of userArr){
     if (User.artist1 === "Michael Jackson" || User.record1 === "Thriller" || User.artist2 === "Michael Jackson" || User.record2 === "Thriller"){
@@ -110,6 +108,20 @@ function popRecord (arr, fn){
     trueOFalse = false;
   }
   
+}
+
+function myArtists(){
+  userArr.forEach(artist => {
+    alert(`${artist.artist1}  \n${artist.artist2}`)
+    trueOFalse = false;
+  })
+}
+
+function myRecords(){
+  userArr.forEach(record => {
+    alert(`${record.record1}  \n${record.record2}`)
+    trueOFalse = false;
+  })
 }
 
 createUser();
