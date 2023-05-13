@@ -163,6 +163,7 @@ function popRecord() {
 function myArtists() {
   userArr.forEach(artist => {
     alert(`${artist.artist1}  \n${artist.artist2}`)
+    recommend();
     trueOFalse = false;
   })
 }
@@ -170,6 +171,7 @@ function myArtists() {
 function myRecords() {
   userArr.forEach(record => {
     alert(`${record.record1}  \n${record.record2}`)
+    recommend();
     trueOFalse = false;
   })
 }
