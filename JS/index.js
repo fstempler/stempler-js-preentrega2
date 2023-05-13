@@ -64,7 +64,7 @@ function createUser() {
     } else {
       let musicUser = new User(name, genre, artist1, record1, artist2, record2);
       userArr.push(musicUser);
-      console.log(userArr);
+    
       recommend();
       validUser = true;
     }
@@ -73,7 +73,7 @@ function createUser() {
 
 //Función para elegir las diferentes opciones, cada una con su respectiva función. 
 function recommend() {
-  let select = prompt("Do you want to: \n 1. Recommend me a record. \n 2. Show me my favorite artists. \n 3. Show me my favorite records. \n 4. Recommend random Record \n 5. Change Artist 1  \n 6. Change Record 1 \n 7. Leave");
+  let select = prompt("Do you want to: \n 1. Recommend me a record. \n 2. Show me my favorite artists. \n 3. Show me my favorite records. \n 4. Recommend random Record \n 5. Change Artist 1  \n 6. Change Record 1 \n 7. Search Artist \n 8. Exit");
   while (trueOFalse) {
     switch (select) {
       case "1":
@@ -89,12 +89,15 @@ function recommend() {
         recommendRandomRecord();
         break
       case "5":
-
+        changeArtist1();
         break
       case "6":
-
-        break  
+        changeRecord1();
+        break
       case "7":
+        searchArtist();
+        break    
+      case "8":
         trueOFalse = false
         break;
     }
@@ -138,6 +141,7 @@ function rockRecord() {
     } else {
       alert("Based on your info we recommend to listen to Led Zeppelin - Led Zeppelin IV \nhttps://open.spotify.com/album/5EyIDBAqhnlkAHqvPRwdbX?si=IEgM9EcHRaKxfIer0L6Zog")
     }
+    console.log(userArr);
     trueOFalse = false;
   }
 
@@ -182,6 +186,37 @@ function recommendRandomRecord() {
   //Esto da como resultado un ídice aleatorio dentro del rango de elementos de finded[].
 
   alert(finded[random].artist1 + " - " + finded[random].record1)// Accede a las propiedades requeridas de finded[random] para mostrar la info en un alert. 
+  trueOFalse = false;
+}
+//Función para modificar el 1er artista elegido. 
+function changeArtist1() {
+  userArr = userArr.map((user) => { //Recorre userArr 
+    let newArtist = prompt("Enter your NEW favorite artist"); //Ingresa NEW artist 
+    return  Object.assign({}, user, {artist1: newArtist}); //Crea un nuevo objeto con object.assign y reemplaza el valor de artist1 por el de newArtist.
+    
+});
+  recommend();
+  trueOFalse = false;
+}
+//Función para modificar el 1er record elegido. 
+function changeRecord1() {
+  userArr = userArr.map((user) => { //Recorre userArr 
+    let newRecord = prompt("Enter your NEW favorite record"); //Ingresa NEW record
+    return  Object.assign({}, user, {record1: newRecord}); //Crea un nuevo objeto con object.assign y reemplaza el valor de record1 por el de newRecord.
+    
+});
+  recommend();
+  trueOFalse = false;
+}
+//Función para buscar los artistas ingresados. 
+function searchArtist() {
+  let findArtist = prompt("Search your artist"); //Ingresa el artista a buscar
+  const searchedArtist = userArr.find((artist) => artist.artist1 === findArtist); //Busca en userArr[] si el artista en findArtist es igual a artist1
+  const searchedArtist2 = userArr.find((artist) => artist.artist2 === findArtist); //Busca en userArr[] si el artista en findArtist es igual a artist2
+  if (searchedArtist) {alert(searchedArtist.artist1) //Si se cumple searchedArtist muestra el artista buscado sino sigue
+  }else if(searchedArtist2){alert(searchedArtist2.artist2) //Si se cumple searchedArtist2 muestra el artista sino
+  }else{alert("You don't have that artist in your favorite artists list")}//Si no se cumplen ninguna de las condiciones anteriores muestra que el artista buscado no existe en la lista. 
+  recommend();
   trueOFalse = false;
 }
 
